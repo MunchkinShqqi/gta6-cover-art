@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — poster cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls">
+    <h1>Vice Cover Studio</h1>
+    <p class="tag">Turn a photo and a caption into poster cover art. Photos never leave your machine.</p>
+
+    <div class="group">
+      <h2>1 · Layout</h2>
+      <div class="row">
+        <button type="button" data-layout="poster" class="active">Poster</button>
+        <button type="button" data-layout="triptych">Triptych</button>
+        <button type="button" data-layout="single">Single</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>2 · Photos</h2>
+      <div id="tray" class="tray"></div>
+      <label class="file">Add your photos
+        <input id="photo" type="file" accept="image/*" multiple>
+      </label>
+      <p class="hint">Click a photo to put it in the selected panel. Click a panel on the cover to select it, drag to move its photo, scroll to zoom.</p>
+      <button id="fill-all" type="button">Fill all panels with this photo</button>
+    </div>
+
+    <div class="group">
+      <h2>3 · Selected panel — <span id="selected-panel">Panel 1 / 3</span></h2>
+      <label>Photo
+        <select id="panel-photo"></select>
+      </label>
+      <label>Zoom <input id="zoom" type="range" min="1" max="4" step="0.05" value="1"></label>
+      <label>Move sideways <input id="pan-x" type="range" min="-150" max="150" step="1" value="0"></label>
+      <label>Move up / down <input id="pan-y" type="range" min="-150" max="150" step="1" value="0"></label>
+    </div>
+
+    <div class="group">
+      <h2>4 · Caption</h2>
+      <label>Caption <input id="caption" type="text" maxlength="40" value="BOULEVARD QUEEN"></label>
+      <label>Sub-caption <input id="subcaption" type="text" maxlength="40" value="NEON NIGHTS"></label>
+      <div class="row">
+        <button type="button" data-pos="bottom" class="active">Caption at the foot</button>
+        <button type="button" data-pos="top">Caption at the top</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>5 · Colour grade</h2>
+      <div class="row">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="noir">Noir</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>6 · Export</h2>
+      <div class="row">
+        <button type="button" data-size="1080x1080" class="active">Square 1080 × 1080</button>
+        <button type="button" data-size="1080x1350">Portrait 1080 × 1350</button>
+        <button type="button" data-size="1920x1080">Wide 1920 × 1080</button>
+      </div>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </div>
+
+    <p class="fine">All art, lettering and grades are original work made for this app. No game logos, artwork, characters or fonts.</p>
+  </section>
+  <section class="preview">
+    <canvas id="cover" width="900" height="900" aria-label="The cover preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
